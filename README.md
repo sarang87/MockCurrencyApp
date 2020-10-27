@@ -14,9 +14,9 @@ npm install
 npm start
 ```
 #### Features
-Random 400 assets for currency and stocks
-Assets updated at 1 per second
-Running on port 8000
+- Random 180 assets (can be extended to 400) for currency.
+- Assets updated at 1 per second
+- Running on port 8000
 
 
 ### Frontend (React,Redux)
@@ -28,9 +28,9 @@ yarn install
 yarn start
 ```
 #### Features
-Fetches assets from server and displays real time updates in a table
-Uses Redux for state management
-Table allows sorting, filtering and pagination.
+- Fetches assets from server and displays real time updates in a table
+- Uses Redux for state management
+- Table allows sorting, filtering and pagination.
 
 
 ## Pre-requisites for running the code
