@@ -61,7 +61,7 @@ class AssetsCollection {
     // helper function to get the new rate from the old rate which can increase or decrease
     getNewRate(oldRate) {
         var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-        let newRate = oldRate + (plusOrMinus * oldRate * Math.random() * 0.1)
+        let newRate = oldRate + plusOrMinus
         return newRate
     }
 
@@ -72,7 +72,7 @@ class AssetsCollection {
 
     // helper method to get the base exchange rate while setting up the assets
     getBaseRate() {
-        return Math.random() * Math.floor(MAX)
+        return Math.floor(Math.random() * Math.floor(MAX));
     }
 }
 
