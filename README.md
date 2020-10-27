@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 #### Features
-Randopm 400 assets for currency and stocks
+Random 400 assets for currency and stocks
 Assets updated at 1 per second
 Running on port 8000
 
