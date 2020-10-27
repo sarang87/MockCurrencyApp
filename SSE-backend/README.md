@@ -10,10 +10,12 @@ Use the package manager npm
 
 ```bash
 npm install
+```
 
 To run the code from the SSE-backend root directory
 ```bash
 npm start
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
