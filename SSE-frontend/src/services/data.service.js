@@ -10,6 +10,7 @@ export const getAssets = async () => {
 }
 
 export const subscribeToUpdates = async (cb, dispatch) => {
+    
     const events = new EventSource(`${BASE_URL}stream`);
     events.onmessage = (e) => cb(e, dispatch);
 }

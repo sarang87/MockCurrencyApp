@@ -20,8 +20,7 @@ app.get("/assets", (req, res) => {
 
 // Streaming SSE for sending an update every second for an asset
 app.get("/stream", (req, res) => {
-    console.log(req.headers)
-    console.log("***************\n\n")
+   
     res.set({
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",

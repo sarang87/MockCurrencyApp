@@ -19,6 +19,7 @@ export const getInitialData = () => {
 
 const dataUpdated = (event, dispatch) => {
     const parsedData = JSON.parse(event.data);
+    console.log(parsedData)
     dispatch({
         type: DATA_UPDATED,
         payload: parsedData

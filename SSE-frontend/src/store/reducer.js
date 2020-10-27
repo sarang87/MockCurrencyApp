@@ -1,4 +1,5 @@
 import * as ActionTypes from './actions';
+import { SelectColumnFilter } from '../components/filters';
 
 const initialState = {
     stockData: [],
@@ -10,6 +11,8 @@ const initialState = {
         {
             Header: "Asset Name",
             accessor: "assetName",
+           
+       
         },
         {
             Header: "Asset Price",
