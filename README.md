@@ -42,6 +42,6 @@ yarn start
 
 ## Pre-requisites for running the code
 
-- The backend should be running before the frontend. Currently, if there is a network issue, the frontend does not handle these exceptioon acases for this version of the prototype. They will be added in the next version.
+- The backend should be running before the frontend. Currently, if there is a network issue, the frontend does not handle these exceptions for this version of the prototype. They will be added in the next version or upon request.
 
 - Ports are currenctly hardcoded and application needs to be configured to run on different port manually incase the above port is busy.
