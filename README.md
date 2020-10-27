@@ -4,7 +4,7 @@ The backend server is publishes updates on a predfined port at the rate of 1 ass
 The frontend subscribes to the updates and displaynig the real-time information in a table compoents
 
 ## Project components and running the code
-Use the package manager npm for backend and navigate to the directory
+Use the package manager npm for backend and navigate to the directory SSE-backend.
 
 
 ### Backend (Node.js)
@@ -22,7 +22,7 @@ npm start
 - Running on port 8000.
 
 ### Frontend (React, Redux)
-Use the package manager yarn for frontend and navigate to the directory
+Use the package manager yarn for frontend and navigate to the directory SSE-frontend.
 
 ```bash
 cd SSE-frontend
