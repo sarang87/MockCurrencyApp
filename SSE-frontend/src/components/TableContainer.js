@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import {
   useTable,
   useSortBy,
@@ -8,8 +8,12 @@ import {
 } from 'react-table';
 import { Table, Row, Col, Button, Input, CustomInput } from 'reactstrap';
 import { Filter, DefaultColumnFilter } from './filters';
+import { connect } from 'react-redux';
+import { getInitialData } from '../store/actions'
 
-const TableContainer = ({ columns, data, renderRowSubComponent }) => {
+const TableContainer = ({ columns, data, renderRowSubComponent, ...props }) => {
+  const [sortedColumn, setSortedColumn] = useState({});
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -26,18 +30,33 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
     previousPage,
     setPageSize,
     state: { pageIndex, pageSize },
+    
   } = useTable(
     {
       columns,
       data,
       defaultColumn: { Filter: DefaultColumnFilter },
       initialState: { pageIndex: 0, pageSize: 10 },
+      autoResetPage: false
     },
     useFilters,
     useSortBy,
     useExpanded,
     usePagination
   );
+
+  const columnToBeSorted = useRef(null);
+  useEffect(() => {
+    if (columnToBeSorted.current) {
+      if (sortedColumn.isSorted) {
+        sortedColumn.toggleSortBy(!!sortedColumn.isSortedDesc);
+      }
+    }
+  }, [data])
+
+  useEffect(() => {
+    props.getInitialData();
+  }, [])
 
   const generateSortingIndicator = (column) => {
     return column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : '';
@@ -53,14 +72,16 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
   };
 
   return (
-    <Fragment>
-      <Table bordered hover {...getTableProps()}>
+    <>
+      <Table bordered hover {...getTableProps()} >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>
-                  <div {...column.getSortByToggleProps()}>
+                <th onClick={() => { setSortedColumn(column) }} {...column.getHeaderProps()}>
+                  <div
+                    ref={column.Header === sortedColumn.Header ? columnToBeSorted : null}
+                    {...column.getSortByToggleProps()}>
                     {column.render('Header')}
                     {generateSortingIndicator(column)}
                   </div>
@@ -134,8 +155,9 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
             type='select'
             value={pageSize}
             onChange={onChangeInSelect}
+            id='custom-input-id'
           >
-            
+
             {[10, 20, 30, 40, 50].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
@@ -156,8 +178,21 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
           </Button>
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 
-export default TableContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    getInitialData: () => dispatch(getInitialData())
+  }
+};
+
+const mapStateToProps = state => {
+  return {
+    data: state.stockData,
+    columns: state.columns
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableContainer);
