@@ -15,9 +15,11 @@ npm start
 ```
 #### Features
 - Random 180 assets (can be extended to 400) for currency.
-- Assets updated at 1 per second
-- Running on port 8000
+- Assets updated at 1 per second.
 
+
+#### Configuration
+- Running on port 8000.
 
 ### Frontend (React,Redux)
 Use the package manager yarn for frontend and navigate to the directory
@@ -27,12 +29,19 @@ cd SSE-frontend
 yarn install
 yarn start
 ```
+#### Configuration
+- Running on port 3000.
+
 #### Features
-- Fetches assets from server and displays real time updates in a table
-- Uses Redux for state management
+- Fetches assets from server and displays real time updates in a table.
+- Uses Redux for state management.
 - Table allows sorting, filtering and pagination.
+- Running on port 3000.
+
 
 
 ## Pre-requisites for running the code
 
-The backend should be running before the frontend. Currently, if there is a network issue, the frontend does not handle these exceptioon acases for this version of the prototype. They will be added in the next version.
+- The backend should be running before the frontend. Currently, if there is a network issue, the frontend does not handle these exceptioon acases for this version of the prototype. They will be added in the next version.
+
+- Ports are currenctly hardcoded and application needs to be configured to run on different port manually incase the above port is busy.
