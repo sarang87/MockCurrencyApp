@@ -20,7 +20,13 @@ class AssetsCollection {
             const ts = this.getTimeStamp();
             const cc = this.getCurrencyCode(i);
             const br = this.getBaseRate();
-            var asset = new Asset(i, cc, br, ts, 'currency')
+            if ( i < NUM_ASSETS/2){
+                var asset = new Asset(i, cc, br, ts, 'currency')
+            }
+            else{
+                var asset = new Asset(i, cc, br, ts, 'stock')
+            }
+            
             this.assetsList.push(asset)
         }
 
