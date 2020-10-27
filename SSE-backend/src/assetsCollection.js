@@ -56,7 +56,7 @@ class AssetsCollection {
 
     // helper method to get the current timestamp
     getTimeStamp() {
-        return new Date().getTime()
+        return new Date().toUTCString()
     };
 
     // helper function to get the new rate from the old rate which can increase or decrease
