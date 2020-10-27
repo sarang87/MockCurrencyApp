@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 #### Features
-- Random 180 assets (can be extended to 400) for currency.
+- Random 400 assets for currency and stocks.
 - Assets updated at 1 per second.
 
 
