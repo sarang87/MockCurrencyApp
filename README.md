@@ -21,7 +21,7 @@ npm start
 #### Configuration
 - Running on port 8000.
 
-### Frontend (React,Redux)
+### Frontend (React, Redux)
 Use the package manager yarn for frontend and navigate to the directory
 
 ```bash
