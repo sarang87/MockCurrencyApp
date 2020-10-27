@@ -5,6 +5,7 @@ const { Observable } = require('rxjs/Observable');
 const currencyCodes = require('./dataSource.js')
 const NUM_ASSETS = process.env.NUMBER_OF_ASSETS;
 const MAX = process.env.MAX_BASE_RATE;
+const UPDATE_FREQUENCY = process.env.UPDATE_FREQUENCY
 
 
 // Class to hold a collection of assets. 
@@ -55,7 +56,7 @@ class AssetsCollection {
 
     // helper method to get the current timestamp
     getTimeStamp() {
-        return new Date().getTime()
+        return new Date().toUTCString()
     };
 
     // helper function to get the new rate from the old rate which can increase or decrease
@@ -79,7 +80,7 @@ class AssetsCollection {
 const assets = new AssetsCollection();
 assets.createAssets();
 
-const interval = Rx.Observable.interval(2000);
+const interval = Rx.Observable.interval(1000);
 let index = 0;
 const didUpdate = new Observable((obs) => {
     interval.subscribe(() => {
